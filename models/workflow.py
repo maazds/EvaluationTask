@@ -8,3 +8,4 @@ class Workflowin(models.Model):
     Workflow_name = fields.Char(string='Workflow Name')
     description = fields.Text(string='Description')
     active = fields.Boolean(default=True)
+    print("Test")
