@@ -1,0 +1,85 @@
+<odoo>
+
+
+    <!-- explicit list view definition -->
+
+
+    <record model="ir.ui.view" id="workflow_evaluation_list">
+        <field name="name">workflow evaluation list</field>
+        <field name="model">project.workflow</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="Workflow_name"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="workflow_evaluation_form">
+        <field name="name">workflow evaluation form</field>
+        <field name="model">project.workflow</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+<!--                        <field name="name"/>-->
+                        <field name="active" invisible="1"/>
+                        <field name="Workflow_name"/>
+                        <field name="description"/>
+                    </group>
+                    <group string="ONGOING">
+                        <field name="task_temp_ongoing" >
+                            <tree>
+                                <field name="name"/>
+                                <field name="project_id"/>
+                                <field name="milestone_id"/>
+                                <field name="partner_id"/>
+                                <field name="state"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group string="NEXT">
+                        <field name="task_temp_next">
+                             <tree>
+                                <field name="name"/>
+                                <field name="project_id"/>
+                                <field name="milestone_id"/>
+                                <field name="partner_id"/>
+                                <field name="state"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group string="UP NEXT">
+                        <field name="task_temp_upnext">
+                             <tree>
+                                <field name="name"/>
+                                <field name="project_id"/>
+                                <field name="milestone_id"/>
+                                <field name="partner_id"/>
+                                <field name="state"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!--     actions opening views on models -->
+
+
+    <record model="ir.actions.act_window" id="workflow_evaluation_action_window">
+        <field name="name">Workflow Evaluation</field>
+        <field name="res_model">project.workflow</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem name="Workflow Evaluation" id="workflow_evaluation_menu_root"/>
+
+    <menuitem name="Task Templates" id="workflow_evaluation_menu_1_list" parent="workflow_evaluation_menu_root"
+              action="workflow_evaluation_action_window"/>
+
+
+</odoo>

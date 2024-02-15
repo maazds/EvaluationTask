@@ -1,0 +1,30 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="workflow_evaluation_form_id">
+            <field name="name">workflow form</field>
+            <field name="model">workflow.in</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="Workflow_name"/>
+                            <field name="description"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="workflow_evaluation_window">
+            <field name="name">Workflow</field>
+            <field name="res_model">workflow.in</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Workflow" id="workflow_evaluation_menu_2" parent="workflow_evaluation_menu_root"
+                  action="workflow_evaluation_window"/>
+
+
+    </data>
+</odoo>

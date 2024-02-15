@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="project_task_form_ext" model="ir.ui.view">
+        <field name="name">project_task_ext</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <!--            <xpath expr="//field[@name='tag_ids']" position="after">-->
+            <!--                <field name="project_task_id"-->
+            <!--                       domain="[('project_id','=',project_id),('project_task_milestone_ext','!=','done')]"/>-->
+            <!--            </xpath>-->
+            <xpath expr="//field[@name='milestone_id']" position="after">
+                <field name="workflow_id_ext"/>
+            </xpath>
+            <!--                 <xpath expr="//button[@name='create_action']" position="replace">-->
+            <!--                    <button name="method_direct_trigger" type="object" string="Run Manually" class="oe_highlight"/>-->
+            <!--                </xpath>-->
+            <xpath expr="/form/*" position="before">
+                <header>
+                    <button name="mark_done" type="object" string="Mark as Done" class="oe_highlight"/>
+                    <button name="mark_ongoing" type="object" string="Ongoing" class="btn-secondary"/>
+                    <button name="mark_cancel" type="object" string="Cancel" class="btn-danger"/>
+                    <field name="state" widget="statusbar" statusbar_visible="new,ongoing,cancel,done"
+                           class="oe_right"/>
+                </header>
+            </xpath>
+            <xpath expr="//field[@name='stage_id']" position="replace">
+
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
