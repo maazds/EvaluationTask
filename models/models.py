@@ -19,7 +19,8 @@ class WorkflowEval(models.Model):
         ('cancel', 'Cancelled'),
     ], default='new', string='State')
     def mark_done(self):
-       self.write({'state':'done'})
+        print(self.env.user.name)
+        self.write({'state':'done'})
         # x = self.env['project.task'].search([])
         # for rec in x:
         #     return ({rec.stage_id.name : 'Done'})
